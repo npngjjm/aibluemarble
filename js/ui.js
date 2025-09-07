@@ -1,2 +1,4 @@
 export { UI };
-class UI {}
+class UI {
+  movePlayerToken(cell) {}
+}
