@@ -1,6 +1,6 @@
-export { Game };
+export { FakeGame };
 
-class Game {
+class FakeGame {
   constructor(ui) {
     this.ui = ui;
   }
