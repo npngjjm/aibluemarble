@@ -1,16 +1,16 @@
 import { FakeGame } from "./fakegame.js";
-import { UIRunner } from "./uiRunner.js";
+import { ApplicationRunner } from "./applicationRunner.js";
 jest.mock("./ui.js");
 
 describe("BlueMarble end-to-end test", () => {
-  it("RollAndMovePlayer", () => {
-    const UIrunner = new UIRunner();
-    const game = new FakeGame(UIrunner);
+  it("Roll", () => {
+    const game = new FakeGame();
+    const application = new ApplicationRunner();
 
-    UIrunner.roll();
-    game.move();
-    UIrunner.movePlayerToken();
-    game.endTurn();
-    UIrunner.showEndTurn();
+    application.start(game);
+    application.roll();
+    game.hasReceivedRoll();
+    game.playerHasBankrupted();
+    application.showsGameOver();
   });
 });
