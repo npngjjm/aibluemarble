@@ -11,11 +11,7 @@ class ApplicationRunner {
     this.game = new Game();
     this.ui = new UI();
     this.main = new Main(this.game, this.ui);
-  }
-
-  start() {
-    this.main.addUIListener();
-    this.main.addGameListener();
+    
   }
 
   roll() {
