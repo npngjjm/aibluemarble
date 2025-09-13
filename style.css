@@ -1,6 +1,7 @@
 /* 10x10 부루마블 게임판 스타일 */
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -18,8 +19,8 @@ body {
 
 .board {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(11, 1fr);
   gap: 2px;
   width: min(90vw, 90vh);
   height: min(90vw, 90vh);
@@ -47,6 +48,7 @@ body {
 .board {
   transform: rotate(-90deg);
 }
-.cell, .cell * {
+.cell,
+.cell * {
   transform: rotate(90deg);
 }
