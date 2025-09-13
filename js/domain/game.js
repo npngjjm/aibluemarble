@@ -6,6 +6,7 @@ class Game {
     this.listeners = [];
     this.turn = 0;
     this.ui = ui;
+    this.turn = 0;
   }
   addListener(listener) {
     this.listeners.push(listener);
@@ -13,5 +14,8 @@ class Game {
 
   roll() {
     this.ui.move(4);
+    
+    this.turn = 1;
+    this.ui.showTurn(this.turn);
   }
 }

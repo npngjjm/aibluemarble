@@ -27,6 +27,6 @@ class ApplicationRunner {
   roll() {
     this.game.roll();
     expect(this.fakeUI.move).toHaveBeenCalledWith(4);
-    // expect(this.fakeUI.showTurn).toHaveBeenCalledWith(1);
+    expect(this.fakeUI.showTurn).toHaveBeenCalledWith(1);
   }
 }
