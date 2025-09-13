@@ -7,26 +7,24 @@ import { Game } from "/js/domain/game.js";
 class ApplicationRunner {
   constructor() {
     this.fakeUI = {
-      listeners: [],
-      rolled: function () {
-        this.listeners.forEach((listener) =>
-          listener.update({
-            type: "roll",
-          })
-        );
-      },
       showTurn: jest.fn(),
       move: jest.fn(),
-      addListener(listener) {
-        this.listeners.push(listener);
-      },
     };
     this.game = new Game(this.fakeUI);
   }
 
   roll() {
     this.game.roll();
-    expect(this.fakeUI.move).toHaveBeenCalledWith(4);
+    expect(this.fakeUI.move).toHaveBeenCalledWith(0, 4);
     expect(this.fakeUI.showTurn).toHaveBeenCalledWith(1);
+  }
+
+  rollTwice() {
+    this.game.roll();
+    this.game.roll();
+    expect(this.fakeUI.move).toHaveBeenNthCalledWith(1, 0, 4);
+    expect(this.fakeUI.showTurn).toHaveBeenNthCalledWith(1, 1);
+    expect(this.fakeUI.move).toHaveBeenNthCalledWith(2, 1, 4);
+    expect(this.fakeUI.showTurn).toHaveBeenNthCalledWith(2, 0);
   }
 }

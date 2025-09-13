@@ -1,10 +1,17 @@
 import { ApplicationRunner } from "./applicationRunner.js";
 
-describe("BlueMarble end-to-end test", () => {
+describe("BlueMarble unit test", () => {
   it("Roll4AndMoveEndTurn", () => {
     const app = new ApplicationRunner();
 
     //주사위를 사용자가 눌렀다고 쳤을 때
     app.roll();
+  });
+
+  it("Roll4AndMoveEndTurnTwice", () => {
+    const app = new ApplicationRunner();
+
+    //주사위를 사용자가 눌렀다고 쳤을 때
+    app.rollTwice();
   });
 });

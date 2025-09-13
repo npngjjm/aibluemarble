@@ -6,16 +6,8 @@ class UI {
     this.listeners = [];
   }
 
-  move(n) {
-    movePlayer(0, n);
-  }
-
-  rolled() {
-    const event = {
-      type: "roll",
-    };
-
-    this.listeners.forEach((listener) => listener.update(event));
+  move(playerIndex, n) {
+    movePlayer(playerIndex, n);
   }
 
   showTurn(turn) {
