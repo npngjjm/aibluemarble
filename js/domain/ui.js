@@ -1,5 +1,5 @@
 export { UI };
-import { movePlayer } from "./player.js";
+import { movePlayer } from "/js/GUI/player.js";
 class UI {
   constructor() {
     this.listeners = [];
@@ -16,7 +16,6 @@ class UI {
   rolled() {
     const event = {
       type: "roll",
-      value: 4,
     };
 
     this.listeners.forEach((listener) => listener.update(event));

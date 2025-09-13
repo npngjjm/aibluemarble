@@ -1,16 +1,30 @@
 export { ApplicationRunner };
 import { jest, describe, it, expect } from "@jest/globals";
-import { Main } from "../js/main.js";
+import { Main } from "/js/domain/main.js";
+import { Game } from "/js/domain/game.js";
 
 //UI에 이벤트를 임의로 발생시키는 객체
 class ApplicationRunner {
   constructor() {
-    this.main = new Main();
+    this.fakeUI = {
+      listeners: [],
+      rolled: function () {
+        this.listeners.forEach((listener) =>
+          listener.update({
+            type: "roll",
+          })
+        );
+      },
+      move: jest.fn(),
+      addListener(listener) {
+        this.listeners.push(listener);
+      },
+    };
+    this.main = new Main(this.fakeUI, new Game());
   }
 
   roll() {
-    const moveSpy = jest.spyOn(this.main.ui, "move");
     this.main.ui.rolled();
-    expect(moveSpy).toHaveBeenCalledWith(4);
+    expect(this.fakeUI.move).toHaveBeenCalledWith(4);
   }
 }

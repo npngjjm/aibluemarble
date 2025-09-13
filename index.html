@@ -12,24 +12,16 @@
   </head>
   <body>
     <script type="module">
-      import { createBoard } from "./js/board.js";
-      import { createPlayers, movePlayer } from "./js/player.js";
-      import { Main } from "./js/main.js";
+      import { createBoard } from "/js/GUI/board.js";
+      import { createPlayers, movePlayer } from "/js/GUI/player.js";
+      import { Main } from "/js/domain/main.js";
+      import { UI } from "/js/domain/ui.js";
+      import { Game } from "/js/domain/game.js";
 
-      const main = new Main();
+      const main = new Main(new UI(), new Game());
       createBoard(); // 보드 생성 함수 호출
       createPlayers(2); // 플레이어 2명 생성
       main.ui.rolled();
-
-      // // 2초 후 0번 플레이어를 5칸 이동시키는 예제
-      // setTimeout(() => {
-      //   movePlayer(0, 53);
-      // }, 2000);
-
-      // // 4초 후 1번 플레이어를 8칸 이동시키는 예제
-      // setTimeout(() => {
-      //   movePlayer(1, 17);
-      // }, 4000);
     </script>
   </body>
 </html>

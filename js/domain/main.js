@@ -1,11 +1,9 @@
-export { Main };
 import { Game } from "./game.js";
-import { UI } from "./ui.js";
 
-class Main {
-  constructor() {
-    this.game = new Game();
-    this.ui = new UI();
+export class Main {
+  constructor(ui, game) {
+    this.game = game;
+    this.ui = ui;
     this.game.addListener(new GameListener(this.ui));
     this.ui.addListener(new UIListener(this.game));
   }
