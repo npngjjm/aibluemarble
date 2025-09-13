@@ -1,16 +1,16 @@
 export { UI };
-import { movePlayer } from "./board.js";
+import { movePlayer } from "./player.js";
 class UI {
   constructor() {
     this.listeners = [];
   }
+
   addListener(listener) {
     this.listeners.push(listener);
   }
+
   move(n) {
-    setTimeout(() => {
-      movePlayer(0, n);
-    }, 2000);
+    movePlayer(0, n);
   }
 
   rolled() {
