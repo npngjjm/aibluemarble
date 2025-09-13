@@ -4,6 +4,7 @@ export { Game };
 class Game {
   constructor() {
     this.listeners = [];
+    this.turn = 0;
   }
   addListener(listener) {
     this.listeners.push(listener);

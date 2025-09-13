@@ -15,16 +15,19 @@ class ApplicationRunner {
           })
         );
       },
+      showTurn: jest.fn(),
       move: jest.fn(),
       addListener(listener) {
         this.listeners.push(listener);
       },
     };
-    this.main = new Main(this.fakeUI, new Game());
+    this.game = new Game();
+    this.main = new Main(this.fakeUI, this.game);
   }
 
   roll() {
-    this.main.ui.rolled();
+    this.game.roll();
     expect(this.fakeUI.move).toHaveBeenCalledWith(4);
+    // expect(this.fakeUI.showTurn).toHaveBeenCalledWith(1);
   }
 }
