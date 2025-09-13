@@ -1,7 +1,7 @@
 export { ApplicationRunner };
 import { jest, describe, it, expect } from "@jest/globals";
-import { Main } from "/js/domain/main.js";
 import { Game } from "/js/domain/game.js";
+
 
 //UI에 이벤트를 임의로 발생시키는 객체
 class ApplicationRunner {
@@ -21,8 +21,7 @@ class ApplicationRunner {
         this.listeners.push(listener);
       },
     };
-    this.game = new Game();
-    this.main = new Main(this.fakeUI, this.game);
+    this.game = new Game(this.fakeUI);
   }
 
   roll() {

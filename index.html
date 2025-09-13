@@ -14,11 +14,10 @@
     <script type="module">
       import { createBoard } from "/js/GUI/board.js";
       import { createPlayers, movePlayer } from "/js/GUI/player.js";
-      import { Main } from "/js/domain/main.js";
       import { UI } from "/js/domain/ui.js";
       import { Game } from "/js/domain/game.js";
 
-      const main = new Main(new UI(), new Game()); // 기존 로직은 그대로 둡니다.
+      const game = new Game(new UI()); // 기존 로직은 그대로 둡니다.
       createBoard(); // 보드 생성 함수 호출
       createPlayers(2); // 플레이어 2명 생성
       /**
@@ -48,7 +47,7 @@
 
         // 버튼 클릭 이벤트 리스너
         button.addEventListener("click", () => {
-          main.ui.rolled();
+          game.roll();
         });
 
         document.body.appendChild(button);
