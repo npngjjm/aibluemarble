@@ -9,6 +9,8 @@ class ApplicationRunner {
       showTurn: jest.fn(),
       move: jest.fn(),
       propose: jest.fn(),
+      pay: jest.fn(),
+      buy: jest.fn(),
     };
     this.game = new Game(this.fakeUI);
   }
@@ -16,17 +18,24 @@ class ApplicationRunner {
   roll() {
     this.game.roll();
     expect(this.fakeUI.move).toHaveBeenCalledWith(0, 4);
-    expect(this.fakeUI.showTurn).toHaveBeenCalledWith(1);
     expect(this.fakeUI.propose).toHaveBeenCalled();
   }
 
   rollTwice() {
     this.game.roll();
+    this.game.buy();
     this.game.roll();
     expect(this.fakeUI.move).toHaveBeenNthCalledWith(1, 0, 4);
-    expect(this.fakeUI.showTurn).toHaveBeenNthCalledWith(1, 1);
     expect(this.fakeUI.propose).toHaveBeenCalled();
+
     expect(this.fakeUI.move).toHaveBeenNthCalledWith(2, 1, 4);
-    expect(this.fakeUI.showTurn).toHaveBeenNthCalledWith(2, 0);
+    expect(this.fakeUI.pay).toHaveBeenCalled();
+  }
+
+  buy() {
+    this.game.roll();
+    this.game.buy();
+
+    expect(this.fakeUI.buy).toHaveBeenCalledWith(0);
   }
 }

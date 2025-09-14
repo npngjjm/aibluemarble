@@ -15,14 +15,29 @@ class Game {
 
     if (this.lands[this.playerPositions[this.turn]] === null) {
       this.ui.propose(this.playerPositions[this.turn]);
+    } else {
+      this.ui.pay();
     }
+  }
+
+  buy() {
+    this.lands[this.playerPositions[this.turn]] = this.turn;
+    this.ui.buy(this.turn);
 
     if (this.turn === 0) {
       this.turn = 1;
     } else if (this.turn === 1) {
       this.turn = 0;
     }
+    this.ui.showTurn(this.turn);
+  }
 
+  pay() {
+    if (this.turn === 0) {
+      this.turn = 1;
+    } else if (this.turn === 1) {
+      this.turn = 0;
+    }
     this.ui.showTurn(this.turn);
   }
 

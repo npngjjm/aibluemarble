@@ -13,4 +13,7 @@ class UI {
   propose(position) {
     showPurchaseModal(position);
   }
+
+  buy(player) {}
+  pay(player) {}
 }

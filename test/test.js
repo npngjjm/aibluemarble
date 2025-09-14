@@ -14,4 +14,12 @@ describe("BlueMarble unit test", () => {
     //주사위를 사용자가 눌렀다고 쳤을 때
     app.rollTwice();
   });
+
+  it("Roll4AndPurchase", () => {
+    const app = new ApplicationRunner();
+
+    app.roll();
+
+    app.buy();
+  });
 });
