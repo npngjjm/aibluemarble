@@ -1,3 +1,39 @@
+/* 구매 모달 스타일 */
+#purchase-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+}
+#purchase-modal > div {
+  background: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+#purchase-modal button {
+  padding: 10px 24px;
+  margin: 8px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+#purchase-yes {
+  background: #28a745;
+  color: #fff;
+}
+#purchase-no {
+  background: #dc3545;
+  color: #fff;
+}
 /* 10x10 부루마블 게임판 스타일 */
 
 html,
