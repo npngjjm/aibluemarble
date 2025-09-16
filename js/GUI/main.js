@@ -90,6 +90,7 @@ export function showPurchaseModal(position) {
   }
   function onYes() {
     // 실제 구매 로직은 domain에서 처리
+    game.buy();
     window.dispatchEvent(
       new CustomEvent("land-purchase-result", {
         detail: { position, result: true },

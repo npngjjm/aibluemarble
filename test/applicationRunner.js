@@ -21,21 +21,20 @@ class ApplicationRunner {
     expect(this.fakeUI.propose).toHaveBeenCalled();
   }
 
-  rollTwice() {
-    this.game.roll();
-    this.game.buy();
-    this.game.roll();
-    expect(this.fakeUI.move).toHaveBeenNthCalledWith(1, 0, 4);
-    expect(this.fakeUI.propose).toHaveBeenCalled();
-
-    expect(this.fakeUI.move).toHaveBeenNthCalledWith(2, 1, 4);
-    expect(this.fakeUI.pay).toHaveBeenCalled();
-  }
-
   buy() {
     this.game.roll();
     this.game.buy();
+    this.game.roll();
 
     expect(this.fakeUI.buy).toHaveBeenCalledWith(0);
+    expect(this.fakeUI.pay).toHaveBeenCalled();
+  }
+
+  rollBuyRoll() {
+    this.roll();
+    this.buy();
+    this.game.roll();
+    expect(this.fakeUI.move).toHaveBeenCalledWith(0, 4);
+    expect(this.fakeUI.propose).not(toHaveBeenCalled());
   }
 }

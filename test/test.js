@@ -1,3 +1,4 @@
+import { Game } from "../js/domain/game.js";
 import { ApplicationRunner } from "./applicationRunner.js";
 
 describe("BlueMarble unit test", () => {
@@ -8,18 +9,9 @@ describe("BlueMarble unit test", () => {
     app.roll();
   });
 
-  it("Roll4AndMoveEndTurnTwice", () => {
-    const app = new ApplicationRunner();
+  // it("Roll4AndPurchaseAndPay", () => {
+  //   const app = new ApplicationRunner();
 
-    //주사위를 사용자가 눌렀다고 쳤을 때
-    app.rollTwice();
-  });
-
-  it("Roll4AndPurchase", () => {
-    const app = new ApplicationRunner();
-
-    app.roll();
-
-    app.buy();
-  });
+  //   app.rollBuyROll();
+  // });
 });

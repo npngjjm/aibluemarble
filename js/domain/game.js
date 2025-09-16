@@ -3,7 +3,6 @@ export { Game };
 //test하는 실제 객체
 class Game {
   constructor(ui) {
-    this.turn = 0;
     this.ui = ui;
     this.turn = 0;
     this.playerPositions = [0, 0];
