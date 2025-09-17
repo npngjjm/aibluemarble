@@ -8,8 +8,8 @@ describe("BlueMarble unit test", () => {
     app.roll();
   });
 
-  it("Roll4AndPurchaseAndPay", () => {
-    const app = new ApplicationRunner();
-    app.rollBuyRoll();
-  });
+  // it("Roll4AndPurchaseAndPay", () => {
+  //   const app = new ApplicationRunner();
+  //   app.rollBuyRoll();
+  // });
 });

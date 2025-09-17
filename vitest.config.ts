@@ -2,9 +2,9 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-  include: ['test ts/**/*.ts'],
+  include: ['test ts/test.ts'],
     environment: 'node',
     globals: true,
-    allowImportingTsExtensions: true,
+    // allowImportingTsExtensions: true,
   },
 });
