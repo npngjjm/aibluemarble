@@ -2,14 +2,14 @@ import { ApplicationRunner } from "./applicationRunner.js";
 // Jest 글로벌 함수 사용 (import 제거)
 
 
-describe("BlueMarble unit test", () => {
-  it("Roll4AndMoveEndTurn", () => {
+describe("BlueMarble end-to-end-like test", () => {
+  it("Roll4AndMovePropose", () => {
     const app = new ApplicationRunner();
     app.roll();
   });
 
-  // it("Roll4AndPurchaseAndPay", () => {
-  //   const app = new ApplicationRunner();
-  //   app.rollBuyRoll();
-  // });
+  it("Roll4AndPurchaseAndRollAndPay", () => {
+    const app = new ApplicationRunner();
+    app.rollBuyRoll();
+  });
 });

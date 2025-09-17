@@ -1,10 +1,8 @@
 // test하는 실제 객체
 interface UI {
 	move(playerIndex: number, n: number): void 
-	showTurn(turn: number): void 
+	showTurn(player: number): void 
 	propose(position: number): void 
-	buy(player: number): void
-	pay(player:number): void
 }
 export class Game {
 	turn: 0 | 1;
@@ -20,17 +18,16 @@ export class Game {
 	}
 
 	roll(): void {
-		this.move(this.turn, 4);
+		this.move(4);
 		if (this.lands[this.playerPositions[this.turn]] === null) {
 			this.ui.propose(this.playerPositions[this.turn]);
 		} else {
-			this.ui.pay(this.turn);
+			this.pay();
 		}
 	}
 
 	buy(): void {
 		this.lands[this.playerPositions[this.turn]] = this.turn;
-		this.ui.buy(this.turn);
 
 		if (this.turn === 0) {
 			this.turn = 1;
@@ -49,8 +46,8 @@ export class Game {
 		this.ui.showTurn(this.turn);
 	}
 
-	move(turn: number, step: number): void {
-		this.playerPositions[turn] += step;
-		this.ui.move(turn, step);
+	move(step: number): void {
+		this.playerPositions[this.turn] += step;
+		this.ui.move(this.turn, step);
 	}
 }
