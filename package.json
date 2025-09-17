@@ -1,12 +1,14 @@
 {
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  "test": "vitest"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
+    "@vitest/ui": "^3.2.4",
     "jest": "^30.1.3",
     "ts-jest": "^29.4.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   },
   "type": "module"
 }

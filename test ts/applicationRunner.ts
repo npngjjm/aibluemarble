@@ -1,6 +1,7 @@
 import { Game } from "../ts/domain/game.js";
-import type { Mock } from "jest-mock";
-import { jest, describe, it, expect } from "@jest/globals";
+import { vi } from "vitest";
+import type { Mock } from "vitest";
+// Jest 글로벌 함수 사용 (import 제거)
 
 
 export class ApplicationRunner {
@@ -15,11 +16,11 @@ export class ApplicationRunner {
 
   constructor() {
     this.fakeUI = {
-      showTurn: jest.fn(),
-      move: jest.fn(),
-      propose: jest.fn(),
-      pay: jest.fn(),
-      buy: jest.fn(),
+  showTurn: vi.fn(),
+  move: vi.fn(),
+  propose: vi.fn(),
+  pay: vi.fn(),
+  buy: vi.fn(),
     };
     this.game = new Game(this.fakeUI);
   }

@@ -1,5 +1,5 @@
 import { ApplicationRunner } from "./applicationRunner.js";
-import { jest, describe, it, expect } from "@jest/globals";
+// Jest 글로벌 함수 사용 (import 제거)
 
 
 describe("BlueMarble unit test", () => {
