@@ -1,12 +1,16 @@
 interface UI {
     move(playerIndex: number, n: number): void;
-    showTurn(turn: number): void;
+    showTurn(player: number): void;
     propose(position: number): void;
-    buy(player: number): void;
-    pay(player: number): void;
+    update(playerState: playerState): void;
+}
+interface playerState {
+    position: number;
+    money: number;
+    properties: number[];
 }
 export declare class Game {
-    turn: 0 | 1;
+    player: 0 | 1;
     ui: UI;
     playerPositions: number[];
     lands: (number | null)[];
@@ -14,7 +18,7 @@ export declare class Game {
     roll(): void;
     buy(): void;
     pay(): void;
-    move(turn: number, step: number): void;
+    move(step: number): void;
 }
 export {};
 //# sourceMappingURL=game.d.ts.map

@@ -125,7 +125,7 @@ export function createDiceButton() {
     });
     button.addEventListener("click", () => {
         game.roll();
-        createTurnIndicator(game.turn);
+        createTurnIndicator(game.player);
     });
     document.body.appendChild(button);
 }

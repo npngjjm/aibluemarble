@@ -2,12 +2,6 @@ import { Game } from "../ts/domain/game.js";
 import { vi } from "vitest";
 import type { Mock } from "vitest";
 
-interface playerState {
-  position: number;
-  money: number;
-  properties: number[];
-}
-
 export class ApplicationRunner {
   fakeUI: {
     showTurn: Mock;
@@ -31,11 +25,20 @@ export class ApplicationRunner {
     this.game.roll();
     expect(this.fakeUI.move).toHaveBeenCalledWith(0, 4);
     expect(this.fakeUI.propose).toHaveBeenCalled();
+    expect(this.fakeUI.update).toHaveBeenCalledWith({
+      position: 4,
+      money: 100000,
+      properties: [],
+    });
   }
 
   buy() {
     this.game.buy();
-    expect(this.fakeUI.update).toHaveBeenCalledWith({position : 0, money: 1500, properties: [0]});
+    expect(this.fakeUI.update).toHaveBeenCalledWith({
+      position: 0,
+      money: 100000,
+      properties: [0],
+    });
   }
 
   rollBuyRoll() {

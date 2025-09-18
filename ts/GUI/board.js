@@ -1,3 +1,4 @@
+import { properties } from "../domain/constants.js";
 /**
  * 11x11 트랙 레이아웃의 부루마블 보드를 생성합니다.
  * @param containerId - 보드를 담을 컨테이너의 ID
@@ -7,48 +8,7 @@ export function createBoard(containerId = "game-board") {
     const boardContainer = document.createElement("div");
     boardContainer.id = containerId;
     // 부루마블 트랙 이름 배열 (시계방향)
-    const trackNames = [
-        "출발",
-        "타이베이",
-        "황금열쇠",
-        "베이징",
-        "마닐라",
-        "제주도",
-        "싱가포르",
-        "카이로",
-        "이스탄불",
-        "아테네",
-        "무인도",
-        "코펜하겐",
-        "스톡홀름",
-        "베를린",
-        "오타와",
-        "황금열쇠",
-        "상파울루",
-        "부에노스아이레스",
-        "리마",
-        "시드니",
-        "우주여행",
-        "하노이",
-        "방콕",
-        "황금열쇠",
-        "두바이",
-        "요하네스버그",
-        "카사블랑카",
-        "마드리드",
-        "런던",
-        "파리",
-        "로마",
-        "황금열쇠",
-        "모스크바",
-        "도쿄",
-        "홍콩",
-        "황금열쇠",
-        "하와이",
-        "로스앤젤레스",
-        "뉴욕",
-        "사회복지기금",
-    ];
+    const trackNames = properties.map((property) => property[0]);
     let trackIndex = 0;
     const trackCoordinates = [];
     let playerPositions = [];
