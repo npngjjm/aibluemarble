@@ -3,13 +3,13 @@ interface UI {
   move(playerIndex: number, n: number): void;
   showTurn(player: number): void;
   propose(position: number): void;
-  update(playerState: playerState): void;
+  update(player: number, playerState: playerState): void;
 }
 
 interface playerState {
   position: number;
   money: number;
-  properties: string[];
+  properties: number[];
 }
 
 export class Game {
@@ -17,12 +17,14 @@ export class Game {
   ui: UI;
   playerPositions: number[];
   lands: (number | null)[];
+  caches: number[];
 
   constructor(ui: UI) {
     this.player = 0;
     this.ui = ui;
     this.playerPositions = [0, 0];
     this.lands = new Array(40).fill(null);
+    this.caches = [100000, 100000];
   }
 
   roll(): void {
@@ -57,9 +59,9 @@ export class Game {
   move(step: number): void {
     this.playerPositions[this.player] += step;
     this.ui.move(this.player, step);
-    this.ui.update({
+    this.ui.update(this.player, {
       position: this.playerPositions[this.player],
-      money: 100000,
+      money: this.caches[this.player],
       properties: [],
     });
   }

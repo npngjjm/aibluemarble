@@ -20,5 +20,5 @@ export class UI {
     showPurchaseModal(position);
   }
 
-  update(playerState: playerState): void {}
+  update(player: number, playerState: playerState): void {}
 }

@@ -7,7 +7,7 @@ export declare class UI {
     move(playerIndex: number, n: number): void;
     showTurn(turn: number): void;
     propose(position: number): void;
-    upadate(playerState: playerState): void;
+    update(player: number, playerState: playerState): void;
 }
 export {};
 //# sourceMappingURL=ui.d.ts.map

@@ -10,6 +10,6 @@ export class UI {
     propose(position) {
         showPurchaseModal(position);
     }
-    upadate(playerState) { }
+    update(player, playerState) { }
 }
 //# sourceMappingURL=ui.js.map

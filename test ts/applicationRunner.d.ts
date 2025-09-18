@@ -10,7 +10,6 @@ export declare class ApplicationRunner {
     game: Game;
     constructor();
     roll(): void;
-    buy(): void;
     rollBuyRoll(): void;
 }
 //# sourceMappingURL=applicationRunner.d.ts.map

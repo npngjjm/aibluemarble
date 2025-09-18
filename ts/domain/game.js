@@ -3,11 +3,13 @@ export class Game {
     ui;
     playerPositions;
     lands;
+    caches;
     constructor(ui) {
         this.player = 0;
         this.ui = ui;
         this.playerPositions = [0, 0];
         this.lands = new Array(40).fill(null);
+        this.caches = [100000, 100000];
     }
     roll() {
         this.move(4);
@@ -40,9 +42,9 @@ export class Game {
     move(step) {
         this.playerPositions[this.player] += step;
         this.ui.move(this.player, step);
-        this.ui.update({
+        this.ui.update(this.player, {
             position: this.playerPositions[this.player],
-            money: 0,
+            money: this.caches[this.player],
             properties: [],
         });
     }

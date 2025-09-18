@@ -25,27 +25,41 @@ export class ApplicationRunner {
     this.game.roll();
     expect(this.fakeUI.move).toHaveBeenCalledWith(0, 4);
     expect(this.fakeUI.propose).toHaveBeenCalled();
-    expect(this.fakeUI.update).toHaveBeenCalledWith({
+    expect(this.fakeUI.update).toHaveBeenCalledWith(0, {
       position: 4,
       money: 100000,
       properties: [],
     });
   }
 
-  buy() {
-    this.game.buy();
-    expect(this.fakeUI.update).toHaveBeenCalledWith({
-      position: 0,
-      money: 100000,
-      properties: [0],
-    });
-  }
-
   rollBuyRoll() {
-    this.roll();
-    this.buy();
     this.game.roll();
     expect(this.fakeUI.move).toHaveBeenCalledWith(0, 4);
-    expect(this.fakeUI.propose).not.toHaveBeenCalled();
+    expect(this.fakeUI.propose).toHaveBeenCalledWith(0, {
+      property: "마닐라",
+      price: 80,
+    });
+    expect(this.fakeUI.update).toHaveBeenCalledWith(0, {
+      position: 4,
+      money: 100000,
+      properties: [],
+    });
+
+    this.game.buy();
+    expect(this.fakeUI.update).toHaveBeenCalledWith(0, {
+      position: 4,
+      money: 100000 - 80,
+      properties: [0],
+    });
+    expect(this.fakeUI.showTurn).toHaveBeenCalledWith(1);
+
+    this.game.roll();
+    expect(this.fakeUI.move).toHaveBeenCalledWith(1, 4);
+    expect(this.fakeUI.propose).not.toHaveBeenCalledWith(1, 80);
+    expect(this.fakeUI.update).toHaveBeenCalledWith(1, {
+      position: 4,
+      money: 100000 - 80,
+      properties: [],
+    });
   }
 }

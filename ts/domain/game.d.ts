@@ -2,7 +2,7 @@ interface UI {
     move(playerIndex: number, n: number): void;
     showTurn(player: number): void;
     propose(position: number): void;
-    update(playerState: playerState): void;
+    update(player: number, playerState: playerState): void;
 }
 interface playerState {
     position: number;
@@ -14,6 +14,7 @@ export declare class Game {
     ui: UI;
     playerPositions: number[];
     lands: (number | null)[];
+    caches: number[];
     constructor(ui: UI);
     roll(): void;
     buy(): void;
