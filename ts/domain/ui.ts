@@ -16,8 +16,8 @@ export class UI {
     createTurnIndicator(turn);
   }
 
-  propose(position: number): void {
-    showPurchaseModal(position);
+  propose(player: number, proposal : {property : string, price : number}): void {
+    // showPurchaseModal(proposal);
   }
 
   update(player: number, playerState: playerState): void {}

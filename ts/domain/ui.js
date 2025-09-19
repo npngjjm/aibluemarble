@@ -7,8 +7,8 @@ export class UI {
     showTurn(turn) {
         createTurnIndicator(turn);
     }
-    propose(position) {
-        showPurchaseModal(position);
+    propose(player, proposal) {
+        // showPurchaseModal(proposal);
     }
     update(player, playerState) { }
 }

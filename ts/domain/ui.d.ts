@@ -6,7 +6,10 @@ interface playerState {
 export declare class UI {
     move(playerIndex: number, n: number): void;
     showTurn(turn: number): void;
-    propose(position: number): void;
+    propose(player: number, proposal: {
+        property: string;
+        price: number;
+    }): void;
     update(player: number, playerState: playerState): void;
 }
 export {};
