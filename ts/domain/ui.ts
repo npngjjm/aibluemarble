@@ -1,5 +1,5 @@
 import { movePlayer } from "../GUI/player.js";
-import { createTurnIndicator, showPurchaseModal } from "../GUI/main.js";
+import { createTurnIndicator, showPurchaseModal, showPlayerState } from "../GUI/main.js";
 
 interface playerState {
   position: number;
@@ -8,8 +8,8 @@ interface playerState {
 }
 
 export class UI {
-  move(playerIndex: number, n: number): void {
-    movePlayer(playerIndex, n);
+  move(playerIndex: number, step: number): void {
+    movePlayer(playerIndex, step);
   }
 
   showTurn(turn: number): void {
@@ -17,8 +17,10 @@ export class UI {
   }
 
   propose(player: number, proposal : {property : string, price : number}): void {
-    // showPurchaseModal(proposal);
+    showPurchaseModal(player, proposal);
   }
 
-  update(player: number, playerState: playerState): void {}
+  update(player: number, playerState: playerState): void {
+    showPlayerState(player, playerState);
+  }
 }

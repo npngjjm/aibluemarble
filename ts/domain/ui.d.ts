@@ -4,7 +4,7 @@ interface playerState {
     properties: number[];
 }
 export declare class UI {
-    move(playerIndex: number, n: number): void;
+    move(playerIndex: number, step: number): void;
     showTurn(turn: number): void;
     propose(player: number, proposal: {
         property: string;
