@@ -23,7 +23,6 @@ export class ApplicationRunner {
         });
     }
     rollBuyRoll() {
-        // const paySpy = vi.spyOn(this.game, "pay");
         this.game.roll();
         expect(this.fakeUI.move).toHaveBeenCalledWith(0, 4);
         expect(this.fakeUI.propose).toHaveBeenCalledWith(0, {
@@ -48,11 +47,36 @@ export class ApplicationRunner {
             property: "마닐라",
             price: 80,
         });
-        // expect(paySpy).toHaveBeenCalled();
         expect(this.fakeUI.update).toHaveBeenCalledWith(1, {
             position: 4,
             money: 100000 - 80,
             properties: [],
+        });
+    }
+    rollDouble() {
+        this.game.roll();
+        expect(this.fakeUI.move).toHaveBeenCalledWith(0, 4);
+        expect(this.fakeUI.propose).toHaveBeenCalledWith(0, {
+            property: "마닐라",
+            price: 80,
+        });
+        expect(this.fakeUI.update).toHaveBeenCalledWith(0, {
+            position: 4,
+            money: 100000,
+            properties: [],
+        });
+        this.game.buy();
+        expect(this.fakeUI.update).toHaveBeenCalledWith(0, {
+            position: 4,
+            money: 100000 - 80,
+            properties: [4],
+        });
+        expect(this.fakeUI.showTurn).toHaveBeenCalledWith(0);
+        this.game.roll();
+        expect(this.fakeUI.move).toHaveBeenCalledWith(0, 4);
+        expect(this.fakeUI.propose).not.toHaveBeenCalledWith(0, {
+            property: "이스탄불",
+            price: 100,
         });
     }
 }

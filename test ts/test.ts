@@ -11,4 +11,9 @@ describe("BlueMarble end-to-end-like test", () => {
     const app = new ApplicationRunner();
     app.rollBuyRoll();
   });
+
+  it("rollDouble", () => {
+    const app = new ApplicationRunner();
+    app.rollDouble();
+  });
 });

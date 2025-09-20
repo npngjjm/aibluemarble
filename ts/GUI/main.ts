@@ -3,7 +3,7 @@ import { createPlayers, movePlayer } from "./player.js";
 import { Game } from "../domain/game.js";
 import { UI } from "../domain/ui.js";
 
-interface playerState {
+interface PlayerState {
   position: number;
   money: number;
   properties: number[];
@@ -81,7 +81,10 @@ export function createTurnIndicator(turn: number): void {
   turnDiv.textContent = `현재 플레이어 차례: 플레이어 ${turn + 1}`;
 }
 
-export function showPurchaseModal(player: number, proposal : {property: string, price: number}): void {
+export function showPurchaseModal(
+  player: number,
+  proposal: { property: string; price: number }
+): void {
   const modal = document.getElementById("purchase-modal") as HTMLElement;
   const yesBtn = document.getElementById("purchase-yes") as HTMLElement;
   const noBtn = document.getElementById("purchase-no") as HTMLElement;
@@ -116,7 +119,7 @@ export function showPurchaseModal(player: number, proposal : {property: string, 
   noBtn.addEventListener("click", onNo);
 }
 
-export function showPlayerState(player: number, state: playerState): void {
+export function showPlayerState(player: number, state: PlayerState): void {
   let infoDiv = document.getElementById("player-info");
   if (!infoDiv) {
     infoDiv = document.createElement("div");
@@ -140,7 +143,9 @@ export function showPlayerState(player: number, state: playerState): void {
     <b>플레이어 ${player + 1} 정보</b><br>
     위치: ${state.position} (${trackNames[state.position]})<br>
     돈: ${state.money}<br>
-    소유한 땅: ${state.properties.map(idx => trackNames[idx]).join(", ") || "없음"}
+    소유한 땅: ${
+      state.properties.map((idx) => trackNames[idx]).join(", ") || "없음"
+    }
   `;
 }
 
@@ -172,7 +177,7 @@ export function createDiceButton(): void {
 
   button.addEventListener("click", () => {
     game.roll();
-    createTurnIndicator(game.player);
+    // createTurnIndicator(game.player);
   });
 
   document.body.appendChild(button);

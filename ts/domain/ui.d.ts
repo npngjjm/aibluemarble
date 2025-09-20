@@ -1,4 +1,4 @@
-interface playerState {
+interface PlayerState {
     position: number;
     money: number;
     properties: number[];
@@ -10,7 +10,7 @@ export declare class UI {
         property: string;
         price: number;
     }): void;
-    update(player: number, playerState: playerState): void;
+    update(player: number, playerState: PlayerState): void;
 }
 export {};
 //# sourceMappingURL=ui.d.ts.map

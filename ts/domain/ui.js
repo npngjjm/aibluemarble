@@ -1,5 +1,5 @@
 import { movePlayer } from "../GUI/player.js";
-import { createTurnIndicator, showPurchaseModal, showPlayerState } from "../GUI/main.js";
+import { createTurnIndicator, showPurchaseModal, showPlayerState, } from "../GUI/main.js";
 export class UI {
     move(playerIndex, step) {
         movePlayer(playerIndex, step);

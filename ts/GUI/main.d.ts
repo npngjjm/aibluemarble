@@ -1,4 +1,4 @@
-interface playerState {
+interface PlayerState {
     position: number;
     money: number;
     properties: number[];
@@ -8,7 +8,7 @@ export declare function showPurchaseModal(player: number, proposal: {
     property: string;
     price: number;
 }): void;
-export declare function showPlayerState(player: number, state: playerState): void;
+export declare function showPlayerState(player: number, state: PlayerState): void;
 /**
  * 주사위 굴리기 버튼을 생성하고 화면에 추가합니다.
  */

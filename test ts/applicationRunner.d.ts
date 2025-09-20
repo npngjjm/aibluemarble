@@ -11,5 +11,6 @@ export declare class ApplicationRunner {
     constructor();
     roll(): void;
     rollBuyRoll(): void;
+    rollDouble(): void;
 }
 //# sourceMappingURL=applicationRunner.d.ts.map

@@ -128,7 +128,7 @@ export function showPlayerState(player, state) {
     <b>플레이어 ${player + 1} 정보</b><br>
     위치: ${state.position} (${trackNames[state.position]})<br>
     돈: ${state.money}<br>
-    소유한 땅: ${state.properties.map(idx => trackNames[idx]).join(", ") || "없음"}
+    소유한 땅: ${state.properties.map((idx) => trackNames[idx]).join(", ") || "없음"}
   `;
 }
 createTurnIndicator(0);
@@ -156,7 +156,7 @@ export function createDiceButton() {
     });
     button.addEventListener("click", () => {
         game.roll();
-        createTurnIndicator(game.player);
+        // createTurnIndicator(game.player);
     });
     document.body.appendChild(button);
 }

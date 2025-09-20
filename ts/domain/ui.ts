@@ -1,7 +1,11 @@
 import { movePlayer } from "../GUI/player.js";
-import { createTurnIndicator, showPurchaseModal, showPlayerState } from "../GUI/main.js";
+import {
+  createTurnIndicator,
+  showPurchaseModal,
+  showPlayerState,
+} from "../GUI/main.js";
 
-interface playerState {
+interface PlayerState {
   position: number;
   money: number;
   properties: number[];
@@ -16,11 +20,11 @@ export class UI {
     createTurnIndicator(turn);
   }
 
-  propose(player: number, proposal : {property : string, price : number}): void {
+  propose(player: number, proposal: { property: string; price: number }): void {
     showPurchaseModal(player, proposal);
   }
 
-  update(player: number, playerState: playerState): void {
+  update(player: number, playerState: PlayerState): void {
     showPlayerState(player, playerState);
   }
 }

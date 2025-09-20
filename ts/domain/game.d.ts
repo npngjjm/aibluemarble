@@ -5,26 +5,28 @@ interface UI {
         property: string;
         price: number;
     }): void;
-    update(player: number, playerState: playerState): void;
+    update(player: number, playerState: PlayerState): void;
 }
-interface playerState {
+interface PlayerState {
     position: number;
     money: number;
     properties: number[];
 }
 export declare class Game {
-    player: 0 | 1;
-    ui: UI;
-    playerPositions: number[];
-    propertyOwner: (number | null)[];
-    caches: number[];
-    properties: [string, number][];
-    playerProperties: number[][];
+    private player;
+    private ui;
+    private playerPositions;
+    private propertyOwner;
+    private caches;
+    private properties;
+    private playerProperties;
     constructor(ui: UI);
     roll(): void;
     buy(): void;
-    pay(): void;
-    move(step: number): void;
+    private pay;
+    private move;
+    private endTurn;
+    get currentPosition(): number;
 }
 export {};
 //# sourceMappingURL=game.d.ts.map
