@@ -7,6 +7,11 @@ export declare class ApplicationRunner {
         propose: Mock;
         update: Mock;
     };
+    fakeNormalDice: {
+        getTotal: Mock;
+        create: Mock;
+        isDouble: Mock;
+    };
     game: Game;
     constructor();
     roll(): void;

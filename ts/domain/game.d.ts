@@ -12,6 +12,11 @@ interface PlayerState {
     money: number;
     properties: number[];
 }
+interface Dice {
+    create(): void;
+    isDouble(): boolean;
+    getTotal(): number;
+}
 export declare class Game {
     private player;
     private ui;
@@ -20,7 +25,8 @@ export declare class Game {
     private caches;
     private properties;
     private playerProperties;
-    constructor(ui: UI);
+    private dice;
+    constructor(ui: UI, dice?: Dice);
     roll(): void;
     buy(): void;
     private pay;

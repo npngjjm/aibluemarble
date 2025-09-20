@@ -14,7 +14,32 @@ interface PlayerState {
   properties: number[];
 }
 
-interface Dice {}
+interface Dice {
+  create(): void;
+  isDouble(): boolean;
+  getTotal(): number;
+}
+
+class NormalDice {
+  private die1: number;
+  private die2: number;
+  constructor() {
+    this.die1 = 0;
+    this.die2 = 0;
+  }
+  public create() {
+    this.die1 = Math.floor(Math.random() * 6) + 1;
+    this.die2 = Math.floor(Math.random() * 6) + 1;
+  }
+
+  public isDouble() {
+    return this.die1 === this.die2;
+  }
+
+  getTotal() {
+      return this.die1 + this.die2;
+  }
+}
 
 export class Game {
   private player: 0 | 1;
@@ -24,8 +49,9 @@ export class Game {
   private caches: number[];
   private properties: [string, number][];
   private playerProperties: number[][];
+  private dice: Dice;
 
-  constructor(ui: UI) {
+  constructor(ui: UI, dice: Dice = new NormalDice()) {
     this.player = 0;
     this.ui = ui;
     this.playerPositions = [0, 0];
@@ -33,11 +59,12 @@ export class Game {
     this.propertyOwner = new Array(40).fill(null);
     this.caches = [100000, 100000];
     this.playerProperties = [[], []];
-    this.ui.showTurn(this.player);
+    this.dice = dice;
   }
 
   public roll(): void {
-    this.move(4);
+    this.dice.create();
+    this.move(this.dice.getTotal());
     if (this.propertyOwner[this.currentPosition] === null) {
       this.ui.propose(this.player, {
         property: this.properties[this.currentPosition][0],

@@ -1,4 +1,22 @@
 import { properties } from "./constants.js";
+class NormalDice {
+    die1;
+    die2;
+    constructor() {
+        this.die1 = 0;
+        this.die2 = 0;
+    }
+    create() {
+        this.die1 = Math.floor(Math.random() * 6) + 1;
+        this.die2 = Math.floor(Math.random() * 6) + 1;
+    }
+    isDouble() {
+        return this.die1 === this.die2;
+    }
+    getTotal() {
+        return this.die1 + this.die2;
+    }
+}
 export class Game {
     player;
     ui;
@@ -7,7 +25,8 @@ export class Game {
     caches;
     properties;
     playerProperties;
-    constructor(ui) {
+    dice;
+    constructor(ui, dice = new NormalDice()) {
         this.player = 0;
         this.ui = ui;
         this.playerPositions = [0, 0];
@@ -15,10 +34,11 @@ export class Game {
         this.propertyOwner = new Array(40).fill(null);
         this.caches = [100000, 100000];
         this.playerProperties = [[], []];
-        this.ui.showTurn(this.player);
+        this.dice = dice;
     }
     roll() {
-        this.move(4);
+        this.dice.create();
+        this.move(this.dice.getTotal());
         if (this.propertyOwner[this.currentPosition] === null) {
             this.ui.propose(this.player, {
                 property: this.properties[this.currentPosition][0],
