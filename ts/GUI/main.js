@@ -20,6 +20,14 @@ class NormalDice {
         return this.die1 + this.die2;
     }
 }
+class TenDice extends NormalDice {
+    getTotal() {
+        return 10;
+    }
+    isDouble() {
+        return true;
+    }
+}
 const game = new Game(new UI(), new NormalDice());
 createBoard();
 createPlayers(2);

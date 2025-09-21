@@ -28,7 +28,7 @@ export class Game {
   private properties: [string, number][];
   private playerProperties: number[][];
   private dice: Dice;
-  private islandConstraint : number[];
+  private islandConstraint: number[];
 
   constructor(ui: UI, dice: Dice) {
     this.playerID = 0;
@@ -44,18 +44,20 @@ export class Game {
 
   public roll(): void {
     this.dice.create();
-    if(this.islandConstraint[this.playerID] > 0) {
+    if (this.dice.isDouble() === true) {
+      this.islandConstraint[this.playerID] = 0;
+    }
+    if (this.islandConstraint[this.playerID] > 0) {
       this.islandConstraint[this.playerID] -= 1;
       this.endTurn();
       return;
     }
 
     this.move(this.dice.getTotal());
-    if( this.properties[this.currentPosition][0] === "무인도" ) {
+    if (this.properties[this.currentPosition][0] === "무인도") {
       this.islandConstraint[this.playerID] = 3;
       this.endTurn();
-    }
-    else if (this.propertyOwner[this.currentPosition] === null) {
+    } else if (this.propertyOwner[this.currentPosition] === null) {
       this.ui.propose(this.playerID, {
         property: this.properties[this.currentPosition][0],
         price: this.properties[this.currentPosition][1],
@@ -84,7 +86,8 @@ export class Game {
 
   private pay(): void {
     this.caches[this.playerID] -= this.properties[this.currentPosition][1];
-    this.caches[this.propertyOwner[this.currentPosition] as number] += this.properties[this.currentPosition][1];
+    this.caches[this.propertyOwner[this.currentPosition] as number] +=
+      this.properties[this.currentPosition][1];
     this.ui.update(this.playerID, {
       position: this.currentPosition,
       money: this.caches[this.playerID],
@@ -92,9 +95,15 @@ export class Game {
     });
 
     this.ui.update(this.propertyOwner[this.currentPosition] as number, {
-      position: this.playerPositions[this.propertyOwner[this.currentPosition] as number],
+      position:
+        this.playerPositions[
+          this.propertyOwner[this.currentPosition] as number
+        ],
       money: this.caches[this.propertyOwner[this.currentPosition] as number],
-      properties: this.playerProperties[this.propertyOwner[this.currentPosition] as number],
+      properties:
+        this.playerProperties[
+          this.propertyOwner[this.currentPosition] as number
+        ],
     });
 
     this.endTurn();
@@ -112,7 +121,7 @@ export class Game {
   }
 
   private endTurn(): void {
-    if(this.dice.isDouble() === true) {
+    if (this.dice.isDouble() === true) {
       this.ui.showTurn(this.playerID);
       return;
     }

@@ -22,6 +22,9 @@ export class Game {
     }
     roll() {
         this.dice.create();
+        if (this.dice.isDouble() === true) {
+            this.islandConstraint[this.playerID] = 0;
+        }
         if (this.islandConstraint[this.playerID] > 0) {
             this.islandConstraint[this.playerID] -= 1;
             this.endTurn();
@@ -58,7 +61,8 @@ export class Game {
     }
     pay() {
         this.caches[this.playerID] -= this.properties[this.currentPosition][1];
-        this.caches[this.propertyOwner[this.currentPosition]] += this.properties[this.currentPosition][1];
+        this.caches[this.propertyOwner[this.currentPosition]] +=
+            this.properties[this.currentPosition][1];
         this.ui.update(this.playerID, {
             position: this.currentPosition,
             money: this.caches[this.playerID],

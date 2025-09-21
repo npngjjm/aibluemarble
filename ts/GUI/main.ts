@@ -26,7 +26,16 @@ class NormalDice {
   }
 
   public getTotal() {
-      return this.die1 + this.die2;
+    return this.die1 + this.die2;
+  }
+}
+
+class TenDice extends NormalDice {
+  public getTotal() {
+    return 10;
+  }
+  public isDouble() {
+    return true;
   }
 }
 

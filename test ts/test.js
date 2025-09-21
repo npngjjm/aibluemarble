@@ -15,7 +15,11 @@ describe("BlueMarble end-to-end-like test", () => {
     });
     it("islandTest", () => {
         const app = new ApplicationRunner();
-        app.rollEight();
+        app.rollTen();
+    });
+    it("islandEscapeTest", () => {
+        const app = new ApplicationRunner();
+        app.rollTenAndEscape();
     });
 });
 //# sourceMappingURL=test.js.map

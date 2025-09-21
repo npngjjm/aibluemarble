@@ -110,7 +110,7 @@ export class ApplicationRunner {
             price: 100,
         });
     }
-    rollEight() {
+    rollTen() {
         const game = new Game(this.fakeUI, this.fakeNormalTenDice);
         game.roll();
         expect(this.fakeUI.move).toHaveBeenNthCalledWith(1, 0, 10);
@@ -140,8 +140,49 @@ export class ApplicationRunner {
         });
         expect(this.fakeUI.showTurn).toHaveBeenNthCalledWith(2, 0);
         game.roll();
-        // expect(this.fakeUI.move).not.toHaveBeenCalled();
         expect(this.fakeUI.showTurn).toHaveBeenNthCalledWith(3, 1);
+    }
+    rollTenAndEscape() {
+        const game = new Game(this.fakeUI, this.fakeNormalTenDice);
+        game.roll();
+        expect(this.fakeUI.move).toHaveBeenNthCalledWith(1, 0, 10);
+        expect(this.fakeUI.update).toHaveBeenNthCalledWith(1, 0, {
+            position: 10,
+            money: 100000,
+            properties: [],
+        });
+        expect(this.fakeUI.showTurn).toHaveBeenNthCalledWith(1, 1);
+        this.fakeNormalTenDice.getTotal = vi.fn().mockReturnValue(4);
+        game.roll();
+        expect(this.fakeUI.move).toHaveBeenNthCalledWith(2, 1, 4);
+        expect(this.fakeUI.update).toHaveBeenNthCalledWith(2, 1, {
+            position: 4,
+            money: 100000,
+            properties: [],
+        });
+        expect(this.fakeUI.propose).toHaveBeenNthCalledWith(1, 1, {
+            property: "마닐라",
+            price: 80,
+        });
+        game.buy();
+        expect(this.fakeUI.update).toHaveBeenNthCalledWith(3, 1, {
+            position: 4,
+            money: 100000 - 80,
+            properties: [4],
+        });
+        expect(this.fakeUI.showTurn).toHaveBeenNthCalledWith(2, 0);
+        this.fakeNormalTenDice.isDouble = vi.fn().mockReturnValue(true);
+        game.roll();
+        expect(this.fakeUI.move).toHaveBeenNthCalledWith(3, 0, 4);
+        expect(this.fakeUI.update).toHaveBeenNthCalledWith(4, 0, {
+            position: 14,
+            money: 100000,
+            properties: [],
+        });
+        expect(this.fakeUI.propose).toHaveBeenNthCalledWith(2, 0, {
+            property: "오타와",
+            price: 115,
+        });
     }
 }
 //# sourceMappingURL=applicationRunner.js.map

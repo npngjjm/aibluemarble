@@ -25,6 +25,7 @@ export declare class ApplicationRunner {
     roll(): void;
     rollBuyRoll(): void;
     rollDouble(): void;
-    rollEight(): void;
+    rollTen(): void;
+    rollTenAndEscape(): void;
 }
 //# sourceMappingURL=applicationRunner.d.ts.map
