@@ -12,19 +12,19 @@ interface PlayerState {
 }
 
 export class UI {
-  move(playerIndex: number, step: number): void {
+  public move(playerIndex: number, step: number): void {
     movePlayer(playerIndex, step);
   }
 
-  showTurn(turn: number): void {
+  public showTurn(turn: number): void {
     createTurnIndicator(turn);
   }
 
-  propose(player: number, proposal: { property: string; price: number }): void {
+  public propose(player: number, proposal: { property: string; price: number }): void {
     showPurchaseModal(player, proposal);
   }
 
-  update(player: number, playerState: PlayerState): void {
+  public update(player: number, playerState: PlayerState): void {
     showPlayerState(player, playerState);
   }
 }

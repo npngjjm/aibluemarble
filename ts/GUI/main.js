@@ -2,7 +2,25 @@ import { createBoard } from "./board.js";
 import { createPlayers, movePlayer } from "./player.js";
 import { Game } from "../domain/game.js";
 import { UI } from "../domain/ui.js";
-const game = new Game(new UI());
+class NormalDice {
+    die1;
+    die2;
+    constructor() {
+        this.die1 = 0;
+        this.die2 = 0;
+    }
+    create() {
+        this.die1 = Math.floor(Math.random() * 6) + 1;
+        this.die2 = Math.floor(Math.random() * 6) + 1;
+    }
+    isDouble() {
+        return this.die1 === this.die2;
+    }
+    getTotal() {
+        return this.die1 + this.die2;
+    }
+}
+const game = new Game(new UI(), new NormalDice());
 createBoard();
 createPlayers(2);
 const trackNames = [
@@ -94,6 +112,7 @@ export function showPurchaseModal(player, proposal) {
         closeModal();
     }
     function onNo() {
+        game.doNotBuy();
         // window.dispatchEvent(
         //   new CustomEvent("land-purchase-result", {
         //     detail: { property, price, result: false },

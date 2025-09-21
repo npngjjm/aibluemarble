@@ -18,7 +18,7 @@ interface Dice {
     getTotal(): number;
 }
 export declare class Game {
-    private player;
+    private playerID;
     private ui;
     private playerPositions;
     private propertyOwner;
@@ -26,9 +26,11 @@ export declare class Game {
     private properties;
     private playerProperties;
     private dice;
-    constructor(ui: UI, dice?: Dice);
+    private islandConstraint;
+    constructor(ui: UI, dice: Dice);
     roll(): void;
     buy(): void;
+    doNotBuy(): void;
     private pay;
     private move;
     private endTurn;

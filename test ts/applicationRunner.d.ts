@@ -1,4 +1,3 @@
-import { Game } from "../ts/domain/game.js";
 import type { Mock } from "vitest";
 export declare class ApplicationRunner {
     fakeUI: {
@@ -12,10 +11,20 @@ export declare class ApplicationRunner {
         create: Mock;
         isDouble: Mock;
     };
-    game: Game;
+    fakeDoubleDice: {
+        getTotal: Mock;
+        create: Mock;
+        isDouble: Mock;
+    };
+    fakeNormalTenDice: {
+        getTotal: Mock;
+        create: Mock;
+        isDouble: Mock;
+    };
     constructor();
     roll(): void;
     rollBuyRoll(): void;
     rollDouble(): void;
+    rollEight(): void;
 }
 //# sourceMappingURL=applicationRunner.d.ts.map

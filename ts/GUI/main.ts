@@ -9,7 +9,28 @@ interface PlayerState {
   properties: number[];
 }
 
-const game = new Game(new UI());
+class NormalDice {
+  private die1: number;
+  private die2: number;
+  constructor() {
+    this.die1 = 0;
+    this.die2 = 0;
+  }
+  public create() {
+    this.die1 = Math.floor(Math.random() * 6) + 1;
+    this.die2 = Math.floor(Math.random() * 6) + 1;
+  }
+
+  public isDouble() {
+    return this.die1 === this.die2;
+  }
+
+  public getTotal() {
+      return this.die1 + this.die2;
+  }
+}
+
+const game = new Game(new UI(), new NormalDice());
 createBoard();
 createPlayers(2);
 
@@ -108,6 +129,7 @@ export function showPurchaseModal(
     closeModal();
   }
   function onNo() {
+    game.doNotBuy();
     // window.dispatchEvent(
     //   new CustomEvent("land-purchase-result", {
     //     detail: { property, price, result: false },
